@@ -23,19 +23,19 @@ MimeType={{ application.get('mimetype', "Application") }}
 Categories={{ application.get('categories', "") }}
 {%- if 'startupwmclass' in application %}
 StartupWMClass={{ application.get('startupwmclass', "Application") }}
-{%- endif %}
+{% endif %}
 
-{% if 'actions' in application %}
+{%- if 'actions' in application %}
 Actions={{ application.get('actions', "") }}
-{%- endif %}
+{% endif %}
 
-{% if 'fullscreen_exec' in application %}
+{%- if 'fullscreen_exec' in application %}
 [Desktop Action Fullscreen]
 Name=Open in fullscreen
 Exec={{ application.get('fullscreen_exec', "") }}
-{%- endif %}
+{% endif %}
 
-{% if 'standalone_exec' in application %}
+{%- if 'standalone_exec' in application %}
 [Desktop Action Standalone]
 Name=Open in standalone mode
 Exec={{ application.get('standalone_exec', "") }}
