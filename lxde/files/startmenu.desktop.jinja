@@ -1,0 +1,44 @@
+{% set application = salt['pillar.get']('lxde:startmenu:' ~ application, {}) %}
+[Desktop Entry]
+{%- if 'version' in application %}
+Version={{ application.get('version', "1.0") }}
+{%- endif %}
+Name={{ application.get('name', "") }}
+{%- if 'genericname' in application %}
+GenericName={{ application.get('genericname', "") }}
+{%- endif %}
+{%- if 'comment' in application %}
+Comment={{ application.get('comment', "") }}
+{%- endif %}
+{%- if 'tryexec' in application %}
+TryExec={{ application.get('tryexec', "") }}
+{%- endif %}
+Exec={{ application.get('exec', "") }}
+Icon={{ application.get('icon', "") }}
+Terminal={{ application.get('terminal', "false") }}
+{%- if 'type' in application %}
+Type={{ application.get('type', "Application") }}
+{%- endif %}
+{%- if 'mimetype' in application %}
+MimeType={{ application.get('mimetype', "Application") }}
+{%- endif %}
+Categories={{ application.get('categories', "") }}
+{%- if 'startupwmclass' in application %}
+StartupWMClass={{ application.get('startupwmclass', "Application") }}
+{%- endif %}
+
+{%- if 'actions' in application %}
+Actions={{ application.get('actions', "") }}
+{%- endif %}
+
+{%- if 'fullscreen_exec' in application %}
+[Desktop Action Fullscreen]
+Name=Open in fullscreen
+Exec={{ application.get('fullscreen_exec', "") }}
+{%- endif %}
+
+{%- if 'standalone_exec' in application %}
+[Desktop Action Standalone]
+Name=Open in standalone mode
+Exec={{ application.get('standalone_exec', "") }}
+{%- endif %}

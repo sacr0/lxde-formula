@@ -32,3 +32,14 @@ xdg_autostart_{{ application }}:
     - defaults:
         application: "{{ application }}"
 {%- endfor %}
+
+#save .desktop file in startmenu
+{% for application, setting in salt['pillar.get']('lxde:autostart', {}).iteritems() %}
+lxde_startmenu_shortcut_{{ application }}:
+  file.managed:
+    - name: /usr/share/applications/{{ application }}.desktop 
+    - source: salt://lxde/files/startmenu.desktop.jinja
+    - template: jinja
+    - defaults:
+        application: "{{ application }}"
+{%- endfor %}
