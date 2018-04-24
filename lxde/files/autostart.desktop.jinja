@@ -1,4 +1,4 @@
-{{ set application = salt['pillar.get']('lxde:autostart:'+application, "") }}
+{% set application = salt['pillar.get']('lxde:autostart:' ~ application, {}) %}
 [Desktop Entry]
 Name={{ application.get('name', "") }}
 Comment={{ application.get('comment', "") }}
