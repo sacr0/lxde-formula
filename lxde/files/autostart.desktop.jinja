@@ -1,0 +1,8 @@
+{{ set application = salt['pillar.get']('lxde:autostart:'+application, "") }}
+[Desktop Entry]
+Name={{ application.get('name', "") }}
+Comment={{ application.get('comment', "") }}
+Exec={{ application.get('exec', "") }}
+Icon={{ application.get('icon', "") }}
+Terminal={{ application.get('terminal', "false") }}
+Type={{ application.get('type', "Application") }}

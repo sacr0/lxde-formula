@@ -21,3 +21,14 @@ lxdm_config:
     - template: jinja
     - require:
       - pkg: lxde_packages
+      
+#save .desktop file in autostart folder
+{% for application, setting in salt['pillar.get']('lxde:autostart', {}).iteritems() %}
+xdg_autostart_config:
+  file.managed:
+    - name: /etc/xdg/autostart/{{ application }}.desktop 
+    - source: salt://lxde/files/autostart.desktop.jinja
+    - template: jinja
+    - defaults:
+        application: {{ application }}
+{%- endfor %}
