@@ -34,7 +34,7 @@ xdg_autostart_{{ application }}:
 {%- endfor %}
 
 #save .desktop file in startmenu
-{% for application, setting in salt['pillar.get']('lxde:autostart', {}).iteritems() %}
+{% for application, setting in salt['pillar.get']('lxde:startmenu', {}).iteritems() %}
 lxde_startmenu_shortcut_{{ application }}:
   file.managed:
     - name: /usr/share/applications/{{ application }}.desktop 
