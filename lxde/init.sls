@@ -23,7 +23,7 @@ lxdm_config:
       - pkg: lxde_packages
       
 #save .desktop file in autostart folder
-{% for application, setting in salt['pillar.get']('lxde:autostart', {}).iteritems() %}
+{% for application, setting in salt['pillar.get']('lxde:autostart', {}).items() %}
 xdg_autostart_{{ application }}:
   file.managed:
     - name: /etc/xdg/autostart/{{ application }}.desktop 
@@ -34,7 +34,7 @@ xdg_autostart_{{ application }}:
 {%- endfor %}
 
 #save .desktop file in startmenu
-{% for application, setting in salt['pillar.get']('lxde:startmenu', {}).iteritems() %}
+{% for application, setting in salt['pillar.get']('lxde:startmenu', {}).items() %}
 lxde_startmenu_shortcut_{{ application }}:
   file.managed:
     - name: /usr/share/applications/{{ application }}.desktop 
